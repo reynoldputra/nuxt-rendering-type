@@ -1,5 +1,6 @@
 <template>
   <h1>SSG (Static side generation)</h1>
+  <p>Page will only redered in build time</p>
   <div>
     {{ res.data }}
   </div>

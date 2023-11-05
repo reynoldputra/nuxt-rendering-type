@@ -1,5 +1,6 @@
 <template>
   <h1>SSR (Server side rendering)</h1>
+  <p>Request data in server -> render page -> sent to client</p>
   <div>
     {{ res.data }}
   </div>
