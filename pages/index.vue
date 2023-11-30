@@ -8,4 +8,7 @@
   <div>
     <a href="/ssg">SSG</a>
   </div>
+  <a href="/product">
+    <h5>Products</h5>
+  </a>
 </template>
