@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const route = useRoute()
 const { data } = await useAsyncData(async () => {
-  const res = await axios.get("https://fakestoreapi.com/products/" + route.params.id )
+  const res = await axios.get("https://api.escuelajs.co/api/v1/products/" + route.params.id )
   return res.data
 })
 

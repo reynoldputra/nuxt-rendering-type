@@ -15,7 +15,7 @@ const route = useRoute()
 
 onMounted(async () => {
   console.log(route)
-  const { data } = await axios.get("https://fakestoreapi.com/products/" + route.params.id)
+  const { data } = await axios.get("https://api.escuelajs.co/api/v1/products/" + route.params.id)
   product.value = data
 }) 
 </script>

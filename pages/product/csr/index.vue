@@ -21,7 +21,7 @@ import axios from 'axios';
 const products = ref(null)
 
 onMounted(async () => {
-  const { data } = await axios.get("https://fakestoreapi.com/products")
+  const { data } = await axios.get("https://api.escuelajs.co/api/v1/products")
   products.value = data
 }) 
 </script>

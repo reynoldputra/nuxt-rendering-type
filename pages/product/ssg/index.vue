@@ -18,7 +18,7 @@
 import axios from 'axios';
 
 const { data } = await useAsyncData(async () => {
-  const res = await axios.get("https://fakestoreapi.com/products")
+  const res = await axios.get("https://api.escuelajs.co/api/v1/products")
   return res.data
 })
 
