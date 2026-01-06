@@ -3,11 +3,18 @@
 import axios from "axios";
 
 // get statis path for product ssg
-const getProductPath = async () => {
-  const response = await axios.get(
-    'https://fakestoreapi.com/products'
-  );
-  return response?.data.map((p) => `/product/ssg/${p.id}`);
+const getProductPath = async (): Promise<string[]> => {
+  try {
+    const response = await axios.get<Array<{ id: number }>>(
+      'https://api.escuelajs.co/api/v1/products'
+    );
+    return response?.data.map((p: { id: number }) => `/product/ssg/${p.id}`) || [];
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.warn('Failed to fetch product paths for prerendering:', errorMessage);
+    // Return empty array to allow build to continue
+    return [];
+  }
 };
 
 export default defineNuxtConfig({
@@ -20,7 +27,9 @@ export default defineNuxtConfig({
   hooks: {
     async 'nitro:config'(nitroConfig) {
       const slugs = await getProductPath();
-      nitroConfig.prerender.routes.push(...slugs);
+      if (nitroConfig.prerender?.routes) {
+        nitroConfig.prerender.routes.push(...slugs);
+      }
     },
   },
 })
